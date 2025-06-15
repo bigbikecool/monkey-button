@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>กดสิ แพทตี้!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #fff0f5, #ffddee);
+      font-family: 'Comic Sans MS', sans-serif;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 40px;
+      color: #ff3399;
+      font-size: 48px;
+      text-shadow: 2px 2px #fff;
+    }
+
+    button {
+      padding: 15px 40px;
+      font-size: 24px;
+      background-color: #ff66cc;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+      transform: scale(1.05);
+    }
+
+    .monkey {
+      position: absolute;
+      animation: bounce 2s ease-in-out infinite;
+      font-size: 40px;
+      transition: transform 0.2s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>กดสิ แพทตี้!</h1>
+  <button onclick="showMonkey()">กดสิ แพทตี้!</button>
+
+  <!-- เสียงลิง -->
+  <audio id="monkeySound" src="https://www.fesliyanstudios.com/play-mp3/6964" preload="auto"></audio>
+
+  <script>
+    const monkeyEmojis = ['🐵', '🙈', '🙉', '🙊'];
+
+    function showMonkey() {
+      // เล่นเสียง
+      const sound = document.getElementById('monkeySound');
+      sound.currentTime = 0;
+      sound.play();
+
+      // สร้างลิง emoji
+      const monkey = document.createElement('div');
+      monkey.className = 'monkey';
+      monkey.textContent = monkeyEmojis[Math.floor(Math.random() * monkeyEmojis.length)];
+      monkey.style.left = Math.random() * 90 + 'vw';
+      monkey.style.top = Math.random() * 80 + 'vh';
+      monkey.style.fontSize = (30 + Math.random() * 30) + 'px';
+      monkey.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+      document.body.appendChild(monkey);
+    }
+  </script>
+
+</body>
+</html>
